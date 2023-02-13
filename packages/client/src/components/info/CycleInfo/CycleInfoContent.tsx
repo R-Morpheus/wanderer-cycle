@@ -17,7 +17,6 @@ export default function CycleInfoContent({ cycleEntity }: { cycleEntity: EntityI
   const turns = useCycleTurns(cycleEntity);
   const lifeCurrent = useLifeCurrent(cycleEntity);
   const manaCurrent = useManaCurrent(cycleEntity);
-  console.log(turns);
   const levelProps = useMemo(() => {
     // TODO add total exp data
     const exp = 10;

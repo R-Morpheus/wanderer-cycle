@@ -1,7 +1,10 @@
 import { Fragment, ReactNode } from "react";
+import EffectList from "../../EffectList/index";
 import StatLevelProgress, { StatLevelProgressProps } from "../StatLevelProgress";
-// import EffectList from "../../EffectList";
 import classes from "./info.module.scss";
+import { useEffectPrototype } from "../../../mud/hooks/useEffectPrototype";
+import { useActiveGuise } from "../../../mud/hooks/useActiveGuise";
+import { useWandererContext } from "../../../contexts/WandererContext";
 
 export interface StatProps {
   name: string;
@@ -39,6 +42,11 @@ export default function BaseInfo({
   ];
 
   const separator = <div className={classes.separator} />;
+
+  const { cycleEntity } = useWandererContext();
+  const guise = useActiveGuise(cycleEntity);
+  const skill = guise.skillEntities[0];
+  const skillList = useEffectPrototype(skill);
 
   return (
     <section className={classes.info__container}>
@@ -88,7 +96,7 @@ export default function BaseInfo({
         {/*{attrs && <ElementalStats attrs={attrs} />}*/}
       </div>
       {separator}
-      {/*<EffectList />*/}
+      <EffectList effects={skillList} />
     </section>
   );
 }

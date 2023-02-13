@@ -5,11 +5,22 @@ import { AppliedEffect, EffectRemovability } from "../../mud/hooks/useEffectProt
 import { EffectModifier } from "./EffectStatmod";
 import EffectNameItem from "./EffectNameItem";
 import EffectNameSkill from "./EffectNameSkill";
+import CustomButton from "../UI/CustomButton/CustomButton";
+import { useGuise } from "../../mud/hooks/useGuise";
+import { useGuiseEntities } from "../../mud/hooks/useGuiseEntities";
 
-export default function Effect({ entity, protoEntity, removability, statmods, isItem, isSkill }: AppliedEffect) {
+export default function Effect({
+  entity,
+  protoEntity = "item",
+  removability,
+  statmods,
+  isItem = true,
+  isSkill = true,
+}: any) {
   const { cycleEntity } = useWandererContext();
-
-  const durationValue = useDurationValue(cycleEntity, entity);
+  const durationValue = true;
+  const skill = useGuise(useGuiseEntities()[0]).skillEntities[0];
+  console.log("duration", durationValue);
 
   const removeEffect = useCallback(() => {
     console.log("TODO add removeEffect callback");
@@ -19,7 +30,7 @@ export default function Effect({ entity, protoEntity, removability, statmods, is
     <div className="p-1 bg-dark-600 border border-dark-400">
       <div className="overflow-hidden text-ellipsis whitespace-nowrap">
         {protoEntity && isItem && <EffectNameItem entity={protoEntity} />}
-        {protoEntity && isSkill && <EffectNameSkill entity={protoEntity} />}
+        {protoEntity && isSkill && <EffectNameSkill entity={skill} />}
       </div>
 
       {statmods &&
@@ -36,10 +47,9 @@ export default function Effect({ entity, protoEntity, removability, statmods, is
       )}
 
       {/* TODO replace with a working button */}
-      {/*removability === EffectRemovability.BUFF &&
-        <MethodButton name="remove" className="text-sm"
-          onClick={() => removeEffect()} />
-      */}
+      {removability === EffectRemovability.BUFF && (
+        <CustomButton onClick={() => removeEffect()}>{"remove"}</CustomButton>
+      )}
     </div>
   );
 }

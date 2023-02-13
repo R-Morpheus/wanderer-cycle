@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { AppliedEffect } from "../../mud/hooks/useEffectPrototype";
 import Effect from "../Effect";
+import { useGuise } from "../../mud/hooks/useGuise";
+import { useGuiseEntities } from "../../mud/hooks/useGuiseEntities";
 
 interface EffectListSectionProps {
   sourceName: string;
@@ -10,6 +12,7 @@ interface EffectListSectionProps {
 
 export default function EffectListSection({ sourceName, effects, initCollapsed }: EffectListSectionProps) {
   const [collapsed, setCollapsed] = useState(initCollapsed);
+  const skill = useGuise(useGuiseEntities()[0]).skillEntities[0];
 
   return (
     <div className="col-span-3 space-y-2">
@@ -18,7 +21,7 @@ export default function EffectListSection({ sourceName, effects, initCollapsed }
         {collapsed ? ">" : "v"}
       </h5>
 
-      {!collapsed && effects?.map((effect) => <Effect key={effect.entity} {...effect} />)}
+      {!collapsed && effects?.map((effect) => <Effect key={effect} {...effect} skill={skill} />)}
     </div>
   );
 }

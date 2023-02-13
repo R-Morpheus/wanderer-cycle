@@ -6,21 +6,30 @@ interface EffectListProps {
   effects: AppliedEffect[] | undefined;
 }
 
-export default function EffectList({ effects }: EffectListProps) {
-  const effectLists = useMemo(() => {
-    if (!effects) return [];
-    const skillEffects = effects.filter(({ isSkill }) => isSkill);
-    const itemEffects = effects.filter(({ isItem }) => isItem);
+export default function EffectList({ effects }: any) {
+  const effectLists = [
+    {
+      sourceName: 1,
+      effectList: [effects],
+      isInitCollapsed: true,
+    },
+  ];
 
-    const result = [];
-    if (skillEffects.length > 0) {
-      result.push({ sourceName: "skill", effectList: skillEffects, isInitCollapsed: false });
-    }
-    if (itemEffects.length > 0) {
-      result.push({ sourceName: "item", effectList: itemEffects, isInitCollapsed: true });
-    }
-    return result;
-  }, [effects]);
+  //   useMemo(() => {
+  //     if (!effects) return [];
+  //     const skillEffects = effects.filter(({ isSkill }) => isSkill);
+  //     const itemEffects = effects.filter(({ isItem }) => isItem);
+  //
+  //     const result = [];
+  //     if (skillEffects.length > 0) {
+  //       result.push({ sourceName: "skill", effectList: skillEffects, isInitCollapsed: false });
+  //     }
+  //     if (itemEffects.length > 0) {
+  //       result.push({ sourceName: "item", effectList: itemEffects, isInitCollapsed: true });
+  //     }
+  //     return result;
+  //   }, [effects]);
+  // console.log(effectLists)
 
   return (
     <div className="col-span-3 space-y-2">
