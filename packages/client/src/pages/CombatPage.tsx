@@ -42,7 +42,7 @@ const CombatPage = () => {
   }, []);
 
   return (
-    <div className="w-full h-screen flex justify-center relative">
+    <div className="w-screen h-screen flex justify-center">
       {withResult ? (
         <div className="flex">
           <div className="w-full flex-grow">
@@ -53,7 +53,6 @@ const CombatPage = () => {
         </div>
       ) : (
         <div className="flex">
-          Map : {id}
           <div className="w-full flex-grow">
             <Combat />
           </div>

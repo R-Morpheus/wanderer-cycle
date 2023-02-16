@@ -38,13 +38,15 @@ export default function CombatInfo({
   ];
 
   return (
-    <BaseInfo
-      name={name}
-      locationName={locationName}
-      levelProps={levelProps}
-      statProps={statProps}
-      lifeCurrent={lifeCurrent}
-      manaCurrent={manaCurrent}
-    />
+    <div className="absolute top-0 right-0">
+      <BaseInfo
+        name={name}
+        locationName={locationName}
+        levelProps={levelProps}
+        statProps={statProps}
+        lifeCurrent={lifeCurrent}
+        manaCurrent={manaCurrent}
+      />
+    </div>
   );
 }
