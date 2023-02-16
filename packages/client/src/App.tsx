@@ -3,6 +3,8 @@ import { useComponentValue } from "@latticexyz/react";
 import classes from "./App.module.scss";
 import { useMUD } from "./mud/MUDContext";
 import AppContent from "./AppContent";
+import Inventory from "./components/Inventory ";
+import InventoryPage from "./pages/InventoryPage";
 
 export const App = () => {
   const {
@@ -24,7 +26,7 @@ export const App = () => {
           {loadingState.msg} ({Math.floor(loadingState.percentage)}%)
         </div>
       ) : (
-        <AppContent />
+        <Inventory />
       )}
     </div>
   );

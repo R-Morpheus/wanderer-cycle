@@ -14,7 +14,7 @@ const AppContent = () => {
     <nav className={classes.nav}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/home" element={<Home />} />
+          <Route index path="/home" element={<Home />} />
           <Route path="inventory" element={<InventoryPage />} />
           <Route path="wanderer-select" element={<WandererSelect />} />
           <Route path="global-maps" element={<GlobalMaps />} />

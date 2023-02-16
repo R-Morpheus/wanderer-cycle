@@ -4,7 +4,7 @@ import classes from "./App.module.scss";
 const Layout = () => {
   return (
     <div className={classes.content}>
-      <div className={classes.nav__container}>
+      <nav className={classes.nav__container}>
         <div className={classes.nav__list}>
           <NavLink
             className={({ isActive }) => (isActive ? classes.navLinkClassActive : classes.navLinkClass)}
@@ -37,7 +37,7 @@ const Layout = () => {
             About Us
           </NavLink>
         </div>
-      </div>
+      </nav>
       <Outlet />
     </div>
   );
